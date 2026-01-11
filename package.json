@@ -1,0 +1,24 @@
+{
+  "name": "ledgerlite-db",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "repl": "npm run repl --workspace=@ledgerlite/core",
+    "demo": "npm run dev --workspace=@ledgerlite/web-demo",
+    "test": "npm run test --workspaces"
+  },
+  "keywords": [
+    "database",
+    "rdbms",
+    "sql",
+    "ledgerlite",
+    "pesapal"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "LedgerLite - A minimal relational database management system built from scratch"
+}

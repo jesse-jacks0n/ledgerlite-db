@@ -1,0 +1,29 @@
+{
+  "name": "@ledgerlite/web-demo",
+  "version": "1.0.0",
+  "main": "dist/server/index.js",
+  "scripts": {
+    "prebuild": "npm run build --prefix ../core",
+    "build": "tsc && npx shx cp -r src/public dist/",
+    "dev": "npx ts-node --transpile-only src/server/index.ts",
+    "start": "node dist/server/index.js",
+    "test": "echo \"Tests pending\" && exit 0"
+  },
+  "keywords": [
+    "database",
+    "demo",
+    "crud",
+    "ledgerlite"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "LedgerLite Web Demo - CRUD application",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "shx": "^0.3.4"
+  },
+  "dependencies": {
+    "ts-node": "^10.9.2"
+  }
+}

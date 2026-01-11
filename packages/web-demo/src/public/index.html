@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LedgerLite - Product Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1>📦 LedgerLite</h1>
+                <p class="tagline">Product Manager Demo</p>
+            </div>
+            <div class="stats" id="stats">
+                <span class="stat-item">Loading...</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Products List -->
+            <section class="card">
+                <div class="card-header">
+                    <h2>Products</h2>
+                    <button class="btn btn-primary" onclick="showCreateModal()">
+                        + Add Product
+                    </button>
+                </div>
+                <div class="table-container">
+                    <table id="products-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>In Stock</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="products-body">
+                            <tr>
+                                <td colspan="5" class="loading">Loading products...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SQL Console -->
+            <section class="card">
+                <div class="card-header">
+                    <h2>SQL Console</h2>
+                    <button class="btn btn-secondary" onclick="clearConsole()">
+                        Clear
+                    </button>
+                </div>
+                <div class="sql-console">
+                    <textarea id="sql-input" placeholder="Enter SQL query... (e.g., SELECT * FROM products;)"
+                        rows="3"></textarea>
+                    <div class="sql-actions">
+                        <button class="btn btn-primary" onclick="executeSQL()">
+                            Execute SQL
+                        </button>
+                        <span class="sql-hint">
+                            Supported: CREATE TABLE, INSERT, SELECT, UPDATE, DELETE
+                        </span>
+                    </div>
+                    <div id="sql-output" class="sql-output"></div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>
+                Built with <strong>LedgerLite</strong> - A minimal RDBMS from scratch
+                <br>
+                <small>Pesapal Junior Developer Challenge 2026</small>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Create/Edit Modal -->
+    <div id="modal" class="modal" onclick="closeModalOnBackdrop(event)">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Add Product</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <form id="product-form" onsubmit="saveProduct(event)">
+                <div class="form-group">
+                    <label for="product-id">ID</label>
+                    <input type="number" id="product-id" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-name">Name</label>
+                    <input type="text" id="product-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-price">Price</label>
+                    <input type="number" id="product-price" required>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="product-stock" checked>
+                        In Stock
+                    </label>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
